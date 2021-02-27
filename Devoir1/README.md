@@ -68,3 +68,39 @@ SORTIE
 |name  |num|
 |------|---|
 |hayden|1  |
+
+
+### B2 Écriture de requêtes SQL
+
+#### a)Trouvez les noms de tous les utilisateurs qui se sont inscrits avant le 1er janvier 2020
+
+```sql
+SELECT name
+FROM users
+WHERE join_date < '2020-01-01';
+```
+
+#### b) Trouvez le nombre de licences logicielles de chaque utilisateur (même celles sans licence). Triez les résultats par nombre de licences (du plus au moins), puis par nom (A - Z).
+
+```sql
+SELECT users.name, count(licenses.user_id) as num_licenses
+FROM users
+LEFT JOIN licenses on licenses.user_id = users.id
+GROUP BY users.name
+ORDER BY num_licenses DESC, name ASC;
+```
+#### c) Insérez des données dans la base de données pour démontrer que les résultats sont triés correctement en (b).
+```sql
+INSERT INTO users (id, name, join_date)
+VALUES
+(56, 'Fabienne', '2017-01-01'),
+(60, 'Guellord', '2021-01-01');
+```
+|name  | num_licenses|
+|---------------------
+|andrew|2|
+|august|1|
+|ayana|1|
+|hayden|1|
+|Fabienne|0|
+|Guellord|0|
