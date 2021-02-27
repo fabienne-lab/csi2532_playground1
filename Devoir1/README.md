@@ -43,7 +43,7 @@ Affichons les resultats des requetes SQL suivantes
 ![sortie de la premiere requete](images/im1.png)
 
 #### b)
-![sortie de la deuxieme requete](images/im1.png)
+![sortie de la deuxieme requete](img/im1.png)
 
 #### c )
 ERROR
