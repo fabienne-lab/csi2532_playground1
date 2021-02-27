@@ -9,7 +9,7 @@ superviser plusieurs étudiants. Un étudiant a un numéro d'étudiant, un nom e
 un programme spécifique. Un professeur a un numéro d'employé, nom et domaine d'expertise
 
 
-####b) 
+####b)
 Toutes les sections de cours doivent être affectées à un cours. Un cours a un code
 de département (par exemple CSI ou SEG) et un numéro de cours (par exemple 2532 ou 4105).
 Une section de cours est défini uniquement par le nom de la section (par exemple A ou B ou C),
