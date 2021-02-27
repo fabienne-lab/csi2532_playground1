@@ -39,5 +39,31 @@ de janvier 2020.
 ## Partie B  SQL
 ### B1
 Affichons les resultats des requetes SQL suivantes
-#### a1)
-![sortie de la premiere requete](im1.png)
+#### a)
+![sortie de la premiere requete](images/im1.png)
+
+#### b)
+![sortie de la deuxieme requete](images/im1.png)
+
+#### c )
+ERROR
+```
+Uncaught Error: table users_2019 has 3 values for 2 columns
+```
+En gros, la table users_2019 a besoin de prendre 3 values alors on va ajouter l'attribut join_date et enlever l'id de la commande select on aurra donc :
+```sql
+WITH users_2019 (id, name,join_date) AS
+(SELECT *
+ FROM users
+ WHERE join_date BETWEEN '2019-01-01' AND '2019-12-31')
+SELECT name,
+       count(licenses.access_code) AS num
+FROM users_2019
+LEFT JOIN licenses ON licenses.user_id = id
+GROUP BY name
+ORDER BY num DESC;
+```
+SORTIE
+ |name|num|
+ |----------|
+ |hayden|1|
