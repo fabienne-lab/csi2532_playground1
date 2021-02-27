@@ -97,7 +97,7 @@ VALUES
 (60, 'Guellord', '2021-01-01');
 ```
 |name  | num_licenses|
-|---------------------
+|------|-------------|
 |andrew|2|
 |august|1|
 |ayana|1|
