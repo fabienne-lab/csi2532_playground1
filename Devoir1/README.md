@@ -64,6 +64,7 @@ GROUP BY name
 ORDER BY num DESC;
 ```
 SORTIE
- |name|num|
- |----------|
- |hayden|1|
+
+|name  |num|
+|------|---|
+|hayden|1  |
