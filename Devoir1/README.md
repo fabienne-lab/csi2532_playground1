@@ -35,20 +35,31 @@ Modélisez le système ci-dessus à l'aide d'un diagramme Entité-Relation. Vous
 entités, les relations, la cardinalité, la participation et les attributs. Vous n'avez pas besoin de
 spécifier les types d'attributs (c'est-à-dire le domaine).
 
+![diagramme question 1 partie A2](img/imga2.png)
+
 ## A3: Algèbre relationnelle
-Ecrivons des requetes en SQL
+Écrivez des requêtes à l'aide de l'algèbre relationnelle pour les situations suivantes.
 
 a) Trouvez tous les espaces de bureau à Ottawa qui sont disponibles le 2 mars 2020
+**πadresse,disponibilite(espace_bureau)=′ottawa′,'2020-03-02'(disponible)**
 
 b) Trouvez tous les utilisateurs (nom et email) et les détails de la propriété (nom et
 ville) et les informations de location (date et coût quotidien) de toutes les bureaux loués du mois
 de janvier 2020.
+**πnom,email(Logement),πnom,ville(espace_bureau),πdate,cout(disponible)**
 
 # Partie B  SQL
 ## B1
 Affichons les resultats des requetes SQL suivantes
 ### a)
-![sortie de la premiere requete](images/im1.png)
+sortie de la premiere requete
+
+|name  |experience|
+|------|---|
+|andrew|2 |
+|august|0|
+hayden|1|
+
 
 ### b)
 ![sortie de la deuxieme requete](img/im1.png)
@@ -124,3 +135,61 @@ WHERE version = 'Sketch'
 ```
 
 ## B3) Mise à jour le schéma SQL
+
+### a) Trouvez les noms de tous les utilisateurs qui se sont inscrits avant le 1er janvier 2020
+
+les questions qui suivent se font particulierement avec des migrations
+
+```sql
+
+ALTER TABLE licenses
+ADD COLUMN log_version varchar(200);
+UPDATE licenses
+SET log_version =
+(SELECT version
+FROM softwares
+WHERE name = software_name);
+
+```
+### b) Mettez à jour la table des softwares pour inclure le nom ET la version comme clé primaire.
+
+```sql
+ALTER TABLE licenses DROP CONSTRAINT softwares_pkey;
+ALTER TABLE licenses DROP CONSTRAINT licenses_software_name_fkey;
+ALTER TABLE licenses ADD PRIMARY KEY (name, version);
+ALTER TABLE licenses ADD FOREIGN KEY (software_name,
+log_version) REFERENCES  softwares (name, version);
+```
+
+### c )
+
+```sql
+BEGIN;
+ALTER TABLE licenses DROP CONSTRAINT licenses_pkey ;
+ALTER TABLE licenses ADD PRIMARY KEY (user_id, software_name, log_version)
+COMMIT;
+```
+on va maintenant verifier si ca marche
+```sql
+INSERT INTO licences
+(user_id, software_name, log_version, access_code)
+SELECT id
+'Sketch'
+'52'
+'xxxyyy111'
+FROM users
+WHERE name = 'andrew'
+```
+
+### d) avec la mis a jours 1 month free
+
+```sql
+INSERT INTO licences (user_id,software_name, log_version, access_code)
+SELECT id ,
+     'Sketch'
+     '52'
+     '1monthfree'
+  FROM users
+  SELECT user_id
+  FROM licences
+  WHERE (software_name, log_version)= ('Sketch', '52');
