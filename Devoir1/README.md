@@ -41,7 +41,7 @@ spécifier les types d'attributs (c'est-à-dire le domaine).
 Écrivez des requêtes à l'aide de l'algèbre relationnelle pour les situations suivantes.
 
 a) Trouvez tous les espaces de bureau à Ottawa qui sont disponibles le 2 mars 2020
-**πadresse,disponibilite(espace_bureau)=′ottawa′,'2020-03-02'(disponible)**
+ ** πadresse,disponibilite(espace_bureau)=′ottawa′,'2020-03-02'(disponible) **
 
 b) Trouvez tous les utilisateurs (nom et email) et les détails de la propriété (nom et
 ville) et les informations de location (date et coût quotidien) de toutes les bureaux loués du mois
