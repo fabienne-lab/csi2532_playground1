@@ -1,42 +1,45 @@
-#CSI 2532- Devoir 1
+# Devoir 2 CSI2532
 
-##Partie A
-###A1: Relations, cardinalité et participation
+## Question 7
+considerons la fonction de hachage suivante: h(x)=x mod 4
+### a) Trouvons les index des chiffres suivants
+2 : position 2
+4:position 0
+6: position 3
+12: position 1
+13: position 4
+16: position 5
+20: position 6
+24: position 7
+26: position 8
+40: position 9
 
-#### a)
-Un étudiant peut être supervisé par plusieurs professeurs, et un professeur peut
-superviser plusieurs étudiants. Un étudiant a un numéro d'étudiant, un nom et est inscrit dans
-un programme spécifique. Un professeur a un numéro d'employé, nom et domaine d'expertise
+### b)
+Non elle n'est pas assez optimale car les positions sont sonder plusieurs fois.
 
 
-####b)
-Toutes les sections de cours doivent être affectées à un cours. Un cours a un code
-de département (par exemple CSI ou SEG) et un numéro de cours (par exemple 2532 ou 4105).
-Une section de cours est défini uniquement par le nom de la section (par exemple A ou B ou C),
-semestre (par exemple hiver), l'année et le cours lui-même. Une section de cours dépend sur le
-cours.
+## Question 6 Index Bitmap
 
-####c)
-Une entreprise a un nom et un quartier général (spécifié par pays). Un conseil d'administration a
-un président, un vice-président, et secrétaire (juste leurs noms). Une entreprise peut avoir au
-plus un conseil administrateurs (mais il n'en a pas besoin). Tout les conseils d'administration
-doivent avoir une et une seule entreprise à gérer.
+### a) construisons un index pour les attribut Brand et Color
+|Brand | Grey|Red|Black|
+|------|-------|----|---|
+|Opel|1|0|0|
+|Opel|0|1|0|
+|Peugeot|0|0|1|
+|BMW|0|0|1|
 
-###A2
-Modélisez le système ci-dessus à l'aide d'un diagramme Entité-Relation. Vous devez inclure les
-entités, les relations, la cardinalité, la participation et les attributs. Vous n'avez pas besoin de
-spécifier les types d'attributs (c'est-à-dire le domaine).
+### b) i. toutes les voitures qui ne sont pas noires
+Il suffit de ressencer toutes les voitures qui on 0 a la place de lattribut noire en fesant une jointure.
 
-###A3: Algèbre relationnelle
-Ecrivons des requetes en SQL
+### ii)
+Il faut resencer toutes les voitures dont l'attribut Red a la valeur 0 et dont la voiture a la marque Opel en fesant une joiture.
 
-a) Trouvez tous les espaces de bureau à Ottawa qui sont disponibles le 2 mars 2020
+## Question 5
+voire lannexe avec images
 
-b) Trouvez tous les utilisateurs (nom et email) et les détails de la propriété (nom et
-ville) et les informations de location (date et coût quotidien) de toutes les bureaux loués du mois
-de janvier 2020.
-
-##Partie B  SQL
-###B1
-Affichons les resultats des requetes SQL suivantes
-####a1)![sortie de la premiere requete](im1.png)
+## Question 4
+ 1-D
+ 2-B
+ 3-E
+ 4-C
+ 5-A
